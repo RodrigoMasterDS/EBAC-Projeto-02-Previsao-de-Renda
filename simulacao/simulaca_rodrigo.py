@@ -1,16 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import streamlit as st
 import os
 import numpy as np
 import pandas as pd
-import streamlit as st
-import pandas as pd
-
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeRegressor
 
@@ -21,13 +12,10 @@ st.set_page_config(
     initial_sidebar_state="auto",
 )
 
-st.sidebar.markdown('''
-<div style="text-align:center">
+st.sidebar.markdown('''<div style="text-align:center">
 <img src="https://github.com/RodrigoMasterDS/Rodrigo-EBAC-DS/blob/main/newebac_logo_black_half.png?raw=true" alt="ebac-logo">
 </div>
-                    
----
-                    
+---                    
 # **Profissão: Cientista de Dados**
 ### **Projeto #02** | Previsão de Renda
 
@@ -107,12 +95,16 @@ else:
                 'qt_pessoas_residencia': qtdpessoasresidencia
             }])
 
+            # Obter as variáveis dummy da entrada
+            entrada_dummies = pd.get_dummies(entrada)
+
             # Concatenar a entrada com as dummies
-            entrada = pd.concat([entrada, pd.get_dummies(entrada)], axis=1)
+            entrada = pd.concat([entrada_dummies], axis=1)
+
+            # Alinhar as colunas com o modelo
             entrada = entrada.reindex(columns=X.columns, fill_value=0)  # Alinha as colunas com o modelo
 
             # Prever a renda
             renda_estimativa = reg_tree.predict(entrada)
             st.write(
                 f"Renda estimada: R${np.round(renda_estimativa.item(), 2):,.2f}".replace('.', ','))
-
