@@ -1,5 +1,11 @@
-import streamlit as st
+#!/usr/bin/env python
+# coding: utf-8
 
+# In[6]:
+
+
+import streamlit as st
+import os
 import numpy as np
 import pandas as pd
 
@@ -44,7 +50,7 @@ with st.sidebar.expander("Bibliotecas/Pacotes", expanded=False):
     ''', language='python')
 
 
-filepath = './input/previsao_de_renda.csv'
+filepath = './previsao_de_renda.csv'
 dfrenda = pd.read_csv(filepath_or_buffer=filepath)
 dfrenda.drop(columns=['Unnamed: 0', 'id_cliente'], inplace=True)
 dfrenda.drop_duplicates(inplace=True, ignore_index=True)
@@ -101,3 +107,4 @@ with st.form("my_form"):
                             ).fillna(value=0).tail(1)
         st.write(
             f"Renda estimada: R${str(np.round(reg_tree.predict(entrada).item(), 2)).replace('.', ',')}")
+
