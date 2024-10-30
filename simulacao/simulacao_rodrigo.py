@@ -8,6 +8,9 @@ import streamlit as st
 import os
 import numpy as np
 import pandas as pd
+import streamlit as st
+import pandas as pd
+
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeRegressor
 
@@ -43,7 +46,7 @@ with st.sidebar.expander("Bibliotecas/Pacotes", expanded=False):
     ''', language='python')
 
 # Verifica se o arquivo existe
-filepath = './previsao_de_renda.csv'
+filepath = 'C:\Users\rodri\Documents\G I T  H U B\EBAC-Projeto-02-Previsao-de-Renda\input\previsao_de_renda.csv'
 if not os.path.exists(filepath):
     st.error(f"Arquivo não encontrado: {filepath}. Verifique o caminho do arquivo.")
 else:
