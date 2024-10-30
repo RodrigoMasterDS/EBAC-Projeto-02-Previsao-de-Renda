@@ -34,7 +34,7 @@ with st.sidebar.expander("Bibliotecas/Pacotes", expanded=False):
     ''', language='python')
 
 # Verifica se o arquivo existe
-filepath = "C:/Users/rodri/Documents/G I T  H U B/EBAC-Projeto-02-Previsao-de-Renda/input/previsao_de_renda.csv"
+filepath = "C:/Users/rodri/Documents/Git/EBAC-Projeto-02-Previsao-de-Renda/input/previsao_de_renda.csv"
 if not os.path.exists(filepath):
     st.error(f"Arquivo não encontrado: {filepath}. Verifique o caminho do arquivo.")
 else:
